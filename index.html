@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #reset,
+    #start {
+        width: 80px;
+        height: 35px;
+        outline: none;
+
+    }
+</style>
+
+
+<body>
+    <div id="app">
+        <canvas id="canvas" width="600" height="600" style="background: #000;"></canvas>
+        <div style="margin:10px">
+            <button id="start">开始</button>
+            <button id="reset">重置</button>
+        </div>
+    </div>
+</body>
+<script type="module">
+    import $draw from "./draw.js"
+    import { bubbleSort } from "./sort.js"
+    import data from "./data.js"
+    ///初始化canvas
+    const canvas = document.getElementById('canvas')
+    const ctx = canvas.getContext('2d')
+    ctx.fillStyle = 'white' // 设置画画的颜色
+    ctx.translate(300, 300) // 移动中心点到(500, 500)
+    //初始化数据
+    $draw.drawAll(data);
+    document.getElementById('start').addEventListener('click', () => {
+        bubbleSort(data)
+    })
+    document.getElementById('reset').addEventListener('click', () => {
+        $draw.reset(data)
+    })
+</script>
+
+</html>
