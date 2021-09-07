@@ -1,4 +1,4 @@
 # sort-visualization-demo
 #### 1、bubbleSort
 
-### ![bubbleSort](images/bubbleSort.gif)
+### ![bubbleSort](https://imgtu.com/i/hTYve1)
