@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Something interesting</title>
 </head>
 <style>
     * {
@@ -22,10 +22,10 @@
         align-items: center;
     }
 
-    #reset,
-    #start {
+    .btn {
         width: 80px;
         height: 35px;
+        margin: 10px;
         outline: none;
 
     }
@@ -35,16 +35,18 @@
 <body>
     <div id="app">
         <canvas id="canvas" width="600" height="600" style="background: #000;"></canvas>
+        <div style="margin:10px" id="btnContainer">
+
+        </div>
         <div style="margin:10px">
-            <button id="start">开始</button>
-            <button id="reset">重置</button>
+            <button id="reset" class="btn">重置</button>
         </div>
     </div>
 </body>
 <script type="module">
-    import $draw from "./draw.js"
-    import { bubbleSort } from "./sort.js"
-    import data from "./data.js"
+    import $draw from "./js/draw.js"
+    import $sort from "./js/sort.js"
+    import data from "./js/data.js"
     ///初始化canvas
     const canvas = document.getElementById('canvas')
     const ctx = canvas.getContext('2d')
@@ -52,8 +54,15 @@
     ctx.translate(300, 300) // 移动中心点到(500, 500)
     //初始化数据
     $draw.drawAll(data);
-    document.getElementById('start').addEventListener('click', () => {
-        bubbleSort(data)
+    let container = document.getElementById('btnContainer')
+    $sort.forEach(fn => {
+        let btn = document.createElement("button");
+        btn.classList.toggle('btn');
+        btn.innerText = fn.name;
+        btn.addEventListener('click', () => {
+            fn.handler(data)
+        });
+        container.appendChild(btn);
     })
     document.getElementById('reset').addEventListener('click', () => {
         $draw.reset(data)
