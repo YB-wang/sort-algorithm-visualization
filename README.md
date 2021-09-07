@@ -1,4 +1,4 @@
 # sort-visualization-demo
 #### 1、bubbleSort
 
-### ![bubbleSort](gif/bubbleSort.giff)
+### ![bubbleSort](gif/bubbleSort.gif)
