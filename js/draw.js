@@ -43,7 +43,6 @@ const $draw = {
                 rects.forEach(item => {
                     this.draw(item)
                 }) // 遍历渲染
-
                 resolve('draw success')
             })
         })
